@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Formation } from '../../models/formation';
 import { FormationService } from '../../services/formation';
 
@@ -10,19 +10,21 @@ import { FormationService } from '../../services/formation';
 })
 export class FormationsListComponent implements OnInit {
 
+  @Input() isConnected!: boolean
+
   formations: Formation[] = [];
   errorMessage: string|null = null;
-  isConnected: boolean = false;
+  // isConnected: boolean = false;
 
   // @Output() sendRemoval = new EventEmitter<number>();
 
   constructor(private formationService: FormationService) {}
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('isConnected'))
-    if(localStorage.getItem('isConnected') === 'true') {
-      this.isConnected = true;
-    }
+    // console.log(localStorage.getItem('isConnected'))
+    // if(localStorage.getItem('isConnected') === 'true') {
+    //   this.isConnected = true;
+    // }
 
     this.formationService.findAll().subscribe({
       next: response => this.formations = response,

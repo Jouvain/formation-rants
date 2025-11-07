@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormationsListComponent } from "../formations-list/formations-list";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormationService } from '../../services/formation';
@@ -9,8 +9,9 @@ import { FormationService } from '../../services/formation';
   templateUrl: './admin.html',
   styleUrl: './admin.css',
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
   formationForm: FormGroup
+  isConnected: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private formationService: FormationService) {
     this.formationForm = this.formBuilder.group({
@@ -19,9 +20,14 @@ export class AdminComponent {
       dateDebut: null
     });
   }
+  ngOnInit(): void {
+    if (localStorage.getItem('isConnected') === 'true') {
+      this.isConnected = true;
+    }
+  }
 
   ajouterFormation() {
-    console.log("Valeur du formulaire : ",this.formationForm.value);
+    console.log("Valeur du formulaire : ", this.formationForm.value);
     this.formationService.save(this.formationForm.value).subscribe(response => {
       console.log("Réponse à l'ajout : ", response);
     })
