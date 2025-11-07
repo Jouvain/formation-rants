@@ -1,11 +1,13 @@
-<h2> Formations </h2>
+<h2 class="text-center mb-4 text-primary" > Formations </h2>
 @if (!errorMessage) {
-<div>
+<div class="d-flex flex-wrap justify-content-center gap-4" >
     @for (formation of formations; track $index) {
-        <div>
-            <h3>{{ formation.titre }}</h3>
-            <p> Durée : {{ formation.duree }} </p>
-            <p> Date : {{ formation.dateDebut }} </p>
+        <div class="card shadow-lg border-0" style="width: 25rem;" >
+            <h3 class="card-header bg-primary text-white text-center fw-bold" >{{ formation.titre }}</h3>
+            <div class="card-body text-center" >
+                <p class="card-text mb-2" > Durée : {{ formation.duree }} </p>
+                <p class="card-text mb-2" > Date : {{ formation.dateDebut }} </p>
+            </div>
         </div>
     } @empty {
         <div>
