@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormationsListComponent } from "../formations-list/formations-list";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormationService } from '../../services/formation';
@@ -10,6 +10,10 @@ import { FormationService } from '../../services/formation';
   styleUrl: './admin.css',
 })
 export class AdminComponent implements OnInit {
+
+  @ViewChild(FormationsListComponent)
+  formationListComponent!: FormationsListComponent;
+
   formationForm: FormGroup
   isConnected: boolean = false;
 
@@ -30,6 +34,7 @@ export class AdminComponent implements OnInit {
     console.log("Valeur du formulaire : ", this.formationForm.value);
     this.formationService.save(this.formationForm.value).subscribe(response => {
       console.log("Réponse à l'ajout : ", response);
+      this.formationListComponent.actualiser();
     })
   }
 }
