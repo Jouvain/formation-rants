@@ -18,4 +18,12 @@ export class FormationService {
     return this.http.get<Formation[]>(this.url);
   }
 
+  save(formation: Formation): Observable<Formation> {
+    return this.http.post<Formation>(this.url, formation);
+  }
+
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
+  }
+
 }

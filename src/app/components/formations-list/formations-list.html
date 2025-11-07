@@ -1,18 +1,23 @@
-<h2 class="text-center mb-4 text-primary" > Formations </h2>
+<h2 class="text-center mb-4 text-primary"> Formations </h2>
 @if (!errorMessage) {
-<div class="d-flex flex-wrap justify-content-center gap-4" >
+<div class="d-flex flex-wrap justify-content-center gap-4">
     @for (formation of formations; track $index) {
-        <div class="card shadow-lg border-0" style="width: 25rem;" >
-            <h3 class="card-header bg-primary text-white text-center fw-bold" >{{ formation.titre }}</h3>
-            <div class="card-body text-center" >
-                <p class="card-text mb-2" > Durée : {{ formation.duree }} </p>
-                <p class="card-text mb-2" > Date : {{ formation.dateDebut }} </p>
-            </div>
+    <div class="card shadow-lg border-0" style="width: 25rem;">
+        <h3 class="card-header bg-primary text-white text-center fw-bold relative">{{ formation.titre }}</h3>
+        @if(isConnected) {
+        <button class="btn btn-primary trash" (click)="supprimer(formation.id)" >
+            <i class="fa-solid fa-trash"></i>
+        </button>
+        }
+        <div class="card-body text-center">
+            <p class="card-text mb-2"> Durée : {{ formation.duree }} </p>
+            <p class="card-text mb-2"> Date : {{ formation.dateDebut }} </p>
         </div>
+    </div>
     } @empty {
-        <div>
-            <p>Aucune formation disponible...</p>
-        </div>
+    <div>
+        <p>Aucune formation disponible...</p>
+    </div>
     }
 </div>
 }

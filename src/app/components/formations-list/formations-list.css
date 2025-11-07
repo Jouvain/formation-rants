@@ -1,0 +1,8 @@
+.relative {
+    position: relative;
+}
+.trash {
+    position: absolute;
+    right: 2%;
+    top: 4%;
+}
