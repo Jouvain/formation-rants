@@ -4,6 +4,8 @@ import { User } from '../../models/user';
 import { Router } from '@angular/router';
 import { JwtService } from '../../services/jwt';
 import { jwtDecode } from 'jwt-decode';
+import { Store } from '@ngrx/store';
+import { connexion } from '../../store/connexion/connexion.action';
 
 @Component({
   selector: 'app-auth',
@@ -18,12 +20,13 @@ export class AuthComponent {
   erreur: string | null = null;
   user: User = {}
 
-  constructor(private router: Router, private jwtService: JwtService) { }
+  constructor(private router: Router, private jwtService: JwtService, private store: Store) { }
 
   login(form: NgForm) {
     this.user.grantType = "PASSWORD";
     this.jwtService.logIn(this.user).subscribe({
       next: response => {
+        this.store.dispatch(connexion());
         localStorage.setItem('isConnected', 'true')
         localStorage.setItem('accessToken', response.accessToken ?? '')
         localStorage.setItem('refreshToken', response.refreshToken ?? '')
