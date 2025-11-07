@@ -27,6 +27,8 @@ export class HomepageComponent {
     this.userService.save(this.userForm.value).subscribe(response => {
       console.log("Réponse à l'inscription : ", response);
     })
+    this.userForm.reset();
+    alert("Vous êtes inscrits, allez sur ==> Administration")
   }
 
 }
