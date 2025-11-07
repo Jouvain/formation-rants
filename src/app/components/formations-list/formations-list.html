@@ -1,0 +1,16 @@
+<h2> Formations </h2>
+@if (!errorMessage) {
+<div>
+    @for (formation of formations; track $index) {
+        <div>
+            <h3>{{ formation.titre }}</h3>
+            <p> Durée : {{ formation.duree }} </p>
+            <p> Date : {{ formation.dateDebut }} </p>
+        </div>
+    } @empty {
+        <div>
+            <p>Aucune formation disponible...</p>
+        </div>
+    }
+</div>
+}

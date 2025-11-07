@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { FormationsListComponent } from "../formations-list/formations-list";
 
 @Component({
   selector: 'app-homepage',
-  imports: [],
+  imports: [FormationsListComponent],
   templateUrl: './homepage.html',
   styleUrl: './homepage.css',
 })
