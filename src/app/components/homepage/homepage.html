@@ -1,1 +1,32 @@
+<div class="container my-5">
+  <h2 class="text-center mb-5">Envie de plus de formations ? Inscrivez-vous !</h2>
+  <form class="mx-auto p-4 shadow-lg rounded-3 bg-light" style="max-width: 900px;" [formGroup]="userForm"
+    (ngSubmit)="ajouterUser()">
+    <h3 class="text-primary mb-4">INSCRIPTION</h3>
+
+    <div class="row mb-3">
+      <div class="col-md-8">
+        <label class="form-label fw-semibold">Pseudo</label>
+        <input type="text" class="form-control" formControlName="username">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Mot de passe</label>
+        <input type="text" class="form-control" formControlName="password">
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Rôle</label>
+        <input type="text" class="form-control" formControlName="role">
+      </div>
+    </div>
+
+
+    <div class="row mb-4">
+      <div class="col-md-6 d-flex align-items-end justify-content-end">
+        <button class="btn btn-primary px-4">
+          <i class="fa-solid fa-plus me-2"></i> S'inscrire
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
 <app-formations-list />

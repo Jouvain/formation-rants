@@ -3,4 +3,5 @@ export interface User {
     password?: string
     grantType?: string
     refreshToken?: string
+    role?: string
 }
